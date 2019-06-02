@@ -6,6 +6,9 @@ const app = express();
 connectDB();
 
 // init middleware
+
+//test fot github notif
+
 app.use(express.json({extended: false}));   //allow us to get data in req.body
 
 app.get("/", (req, res) => {
