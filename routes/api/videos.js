@@ -18,6 +18,9 @@ router.get("/:id", async (req, res) => {
 router.post("/",[
     check('name', 'Name is required').not().isEmpty(),
     check('link', 'Link is required').not().isEmpty(),
+    check('length', 'length is required').not().isEmpty(),
+    check('volume', 'volume is required').not().isEmpty(),
+    check('picture', 'picture is required').not().isEmpty()
     ],
     async (req, res) => {
         const errors = validationResult(req);
@@ -25,7 +28,7 @@ router.post("/",[
             return res.status(400).json({errors: errors.array()});
         }
 
-        const {name, link, subtitle,tags, length, volume} = req.body;
+        const {name, link, subtitle,tags, length, volume, picture} = req.body;
         try {
             let video = await Video.findOne({link});
             if(video){
@@ -34,7 +37,11 @@ router.post("/",[
             video = new Video ({
                 name,
                 link,
-                tags
+                subtitle,
+                tags,
+                length,
+                volume,
+                picture
             });
             await video.save();
             res.send(video);

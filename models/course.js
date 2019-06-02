@@ -18,6 +18,10 @@ const CourseSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    picture: {
+        type: String,
+        required: true
+    },
     date: {
         type: Date,
         default: Date.now()
