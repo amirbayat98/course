@@ -10,6 +10,7 @@ const CourseSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    tags : [String],
     length: {
         type: Number,
         required: true
